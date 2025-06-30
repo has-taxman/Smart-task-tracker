@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - Smart Task Tracker</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .register-container {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      width: 350px;
+      text-align: center;
+    }
+    .register-container h2 {
+      margin-bottom: 1rem;
+      color: #333;
+    }
+    .register-container form {
+      display: flex;
+      flex-direction: column;
+    }
+    .register-container label {
+      margin-bottom: 0.5rem;
+      text-align: left;
+      font-weight: bold;
+      color: #555;
+    }
+    .register-container input {
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    .register-container button {
+      padding: 0.7rem;
+      background-color: #28a745;
+      border: none;
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .register-container button:hover {
+      background-color: #218838;
+    }
+    .register-image {
+      width: 100px;
+      margin-bottom: 1rem;
+    }
+    footer {
+      position: absolute;
+      bottom: 10px;
+      font-size: 0.8rem;
+      color: white;
+      text-align: center;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="register-container">
+    <img class="register-image" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Register Icon" />
+    <h2>Create Account</h2>
+    <form id="register-form">
+      <label for="email">Email</label>
+      <input type="email" id="email" required />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" required />
+
+      <button type="submit">Register</button>
+    </form>
+  </div>
+
+  <footer>
+    &copy; 2025 Smart Task Tracker. All rights reserved.
+  </footer>
+
+  <script>
+    document.getElementById("register-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      const res = await fetch("https://hasnatur-devops.com/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        alert("Account created! Please login.");
+        window.location.href = "login.html";
+      } else {
+        alert(data.message || "Registration failed");
+      }
+    });
+  </script>
+</body>
+</html>

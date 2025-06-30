@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome - Smart Task Tracker</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .navbar {
+      background-color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .navbar h1 {
+      margin: 0;
+      color: #333;
+      font-size: 1.5rem;
+    }
+    .container {
+      flex: 1;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .container img {
+      width: 120px;
+      margin-bottom: 1rem;
+    }
+    .container h2 {
+      color: white;
+      margin-bottom: 0.5rem;
+      font-size: 2rem;
+    }
+    .container p {
+      color: white;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+    }
+    .btn-group a {
+      text-decoration: none;
+      padding: 0.7rem 1.5rem;
+      background-color: #007bff;
+      color: white;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+    .btn-group a:hover {
+      background-color: #0056b3;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.8rem;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="navbar">
+    <h1>Smart Task Tracker</h1>
+  </div>
+
+  <div class="container">
+    <img src="https://cdn-icons-png.flaticon.com/512/3176/3176361.png" alt="Task Icon" />
+    <h2>Organize Your Life</h2>
+    <p>Stay productive. Stay smart. Manage your tasks effortlessly with Smart Task Tracker.</p>
+    <div class="btn-group">
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Smart Task Tracker. Stay Focused!
+  </footer>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - Smart Task Tracker</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .login-container {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      width: 350px;
+      text-align: center;
+    }
+    .login-container h2 {
+      margin-bottom: 1rem;
+      color: #333;
+    }
+    .login-container form {
+      display: flex;
+      flex-direction: column;
+    }
+    .login-container label {
+      margin-bottom: 0.5rem;
+      text-align: left;
+      font-weight: bold;
+      color: #555;
+    }
+    .login-container input {
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    .login-container button {
+      padding: 0.7rem;
+      background-color: #007bff;
+      border: none;
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .login-container button:hover {
+      background-color: #0056b3;
+    }
+    .login-image {
+      width: 100px;
+      margin-bottom: 1rem;
+    }
+    footer {
+      position: absolute;
+      bottom: 10px;
+      font-size: 0.8rem;
+      color: white;
+      text-align: center;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login-container">
+    <img class="login-image" src="https://cdn-icons-png.flaticon.com/512/3176/3176361.png" alt="Task Icon" />
+    <h2>Smart Task Tracker</h2>
+    <form id="login-form">
+      <label for="email">Email</label>
+      <input type="email" id="email" required />
+      
+      <label for="password">Password</label>
+      <input type="password" id="password" required />
+      
+      <button type="submit">Login</button>
+    </form>
+  </div>
+
+  <footer>
+    &copy; 2025 Smart Task Tracker. All rights reserved.
+  </footer>
+
+  <script>
+    // Redirect if already logged in
+    if (localStorage.getItem("token")) {
+      window.location.href = "dashboard.html";
+    }
+
+    document.getElementById("login-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+     // const res = await fetch("http://localhost:3000/login", {      // Use this line to test locally
+      const res = await fetch("https://hasnatur-devops.com/login", { 
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        localStorage.setItem("token", data.token);
+        window.location.href = "dashboard.html";
+      } else {
+        alert(data.message || "Login failed");
+      }
+    });
+  </script>
+</body>
+</html>

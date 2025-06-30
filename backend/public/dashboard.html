@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard - Smart Task Tracker</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .navbar {
+      background-color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .navbar h1 {
+      margin: 0;
+      color: #333;
+      font-size: 1.5rem;
+    }
+    .navbar button {
+      padding: 0.5rem 1rem;
+      background-color: #007bff;
+      border: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .navbar button:hover {
+      background-color: #0056b3;
+    }
+    .container {
+      flex: 1;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h2, h3 {
+      color: white;
+      margin-bottom: 1rem;
+    }
+    #task-list {
+      list-style: none;
+      padding: 0;
+      width: 100%;
+      max-width: 500px;
+    }
+    #task-list li {
+      background: white;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      color: #333;
+      font-size: 1rem;
+      transition: transform 0.2s;
+    }
+    #task-list li:hover {
+      transform: translateY(-3px);
+    }
+    #task-form {
+      margin-top: 2rem;
+      display: flex;
+      gap: 0.5rem;
+      width: 100%;
+      max-width: 500px;
+    }
+    #task-form input {
+      flex: 1;
+      padding: 0.7rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    #task-form button {
+      padding: 0.7rem 1rem;
+      background-color: #28a745;
+      border: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    #task-form button:hover {
+      background-color: #218838;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.8rem;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="navbar">
+    <h1>Smart Task Tracker</h1>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <div class="container">
+    <h2>Your Tasks</h2>
+    <ul id="task-list"></ul>
+
+    <h3>Add New Task</h3>
+    <form id="task-form">
+      <input type="text" id="task-title" placeholder="Task Title" required />
+      <button type="submit">Add</button>
+    </form>
+  </div>
+
+  <footer>
+    &copy; 2025 Smart Task Tracker. Stay Organized!
+  </footer>
+
+  <script>
+    if (!localStorage.getItem("token")) {
+      window.location.href = "login.html";
+    }
+
+    async function fetchTasks() {
+      const token = localStorage.getItem("token");
+      // const res = await fetch("http://localhost:3000/tasks", { // Use this row to test locally
+      const res = await fetch("https://hasnatur-devops.com/tasks", {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+
+      const tasks = await res.json();
+
+      const list = document.getElementById("task-list");
+      list.innerHTML = "";
+      tasks.forEach(task => {
+        const li = document.createElement("li");
+        li.textContent = task.title;
+        list.appendChild(li);
+      });
+    }
+
+    document.getElementById("task-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const title = document.getElementById("task-title").value;
+      const token = localStorage.getItem("token");
+      // const res = await fetch("http://localhost:3000/tasks", { // Use this row to test locally      
+      const res = await fetch("https://hasnatur-devops.com/tasks", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({ title })
+      });
+
+      if (res.ok) {
+        fetchTasks();
+        document.getElementById("task-title").value = "";
+      } else {
+        alert("Failed to add task");
+      }
+    });
+
+    function logout() {
+      localStorage.removeItem("token");
+      window.location.href = "login.html";
+    }
+
+    fetchTasks();
+  </script>
+</body>
+</html>
