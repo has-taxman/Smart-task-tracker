@@ -10,7 +10,7 @@ module "alb" {
 
 module "ecs" {
   source                = "./modules/ecs"
-  image_url             = "717279702591.dkr.ecr.eu-north-1.amazonaws.com/smarttask-backend:latest"
+  image_url             = "PUT YOUR image URL here e.g 717279702591.dkr.ecr.eu-north-1.amazonaws.com/smarttask-backend:latest"
   subnet_id             = module.vpc.public_subnet_ids
   alb_security_group_id = module.alb.alb_security_group_id
   target_group_arn      = module.alb.target_group_arn
