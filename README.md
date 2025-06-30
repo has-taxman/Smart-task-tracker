@@ -3,6 +3,18 @@
 This project provisions a full 3-tier architecture for a task-tracking web application using **Terraform** on **AWS**. It separates the **frontend**, **backend**, and **database** layers, ensuring a scalable, secure, and production-ready setup.
 
 ---
+## 🖼 Screenshots
+### 🔐 Register Page
+
+![Register Page](assets/register.png)
+
+### 🔐 Login Page
+
+![Login Page](assets/login.png)
+
+### 📋 Dashboard
+
+![Dashboard](assets/index.png)
 
 ## 🚀 Features
 
@@ -92,18 +104,6 @@ Make sure your image is available at:
 ```bash
 Your image URL e.g 717279702591.dkr.ecr.eu-north-1.amazonaws.com/smarttask-backend:latest
 ```
-## 🖼 Screenshots
-### 🔐 Register Page
-
-![Register Page](assets/register.png)
-
-### 🔐 Login Page
-
-![Login Page](assets/login.png)
-
-### 📋 Dashboard
-
-![Dashboard](assets/index.png)
 
 # 🧪 Troubleshooting
 DNS_PROBE_POSSIBLE: Ensure Route53 alias record points to ALB.
