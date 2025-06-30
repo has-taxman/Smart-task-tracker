@@ -3,8 +3,15 @@
 This project provisions a full 3-tier architecture for a task-tracking web application using **Terraform** on **AWS**. It separates the **frontend**, **backend**, and **database** layers, ensuring a scalable, secure, and production-ready setup.
 
 ---
-# Screenshots
+## 🖼 Screenshots
 
+### 🔐 Login Page
+
+![Login Page](assets/screenshot1.png)
+
+### 📋 Dashboard
+
+![Dashboard](assets/dashboard.png)
 
 ## 🚀 Features
 
