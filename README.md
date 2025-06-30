@@ -1,4 +1,4 @@
-# ☁️ SmartTaskTracker – 3-Tier AWS Web App Infrastructure
+# ☁️ Smart-Task Tracker – 3-Tier AWS Web App Infrastructure
 
 This project provisions a full 3-tier architecture for a task-tracking web application using **Terraform** on **AWS**. It separates the **frontend**, **backend**, and **database** layers, ensuring a scalable, secure, and production-ready setup.
 
