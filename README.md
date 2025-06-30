@@ -3,6 +3,8 @@
 This project provisions a full 3-tier architecture for a task-tracking web application using **Terraform** on **AWS**. It separates the **frontend**, **backend**, and **database** layers, ensuring a scalable, secure, and production-ready setup.
 
 ---
+# Screenshots
+
 
 ## 🚀 Features
 
@@ -62,8 +64,8 @@ Your backend runs in Docker on Fargate. It serves static HTML and Node.js API ro
 
 ```ini
 PORT=3000
-JWT_SECRET=super_secret_key
-DATABASE_URL=postgresql://smartuser:smartpassword@<RDS-ENDPOINT>:5432/smarttasktracker
+JWT_SECRET=******
+DATABASE_URL=******
 ```
 
 # 🛠 Usage
@@ -90,7 +92,7 @@ dig hasnatur-devops.com +short
 Make sure your image is available at:
 
 ```bash
-717279702591.dkr.ecr.eu-north-1.amazonaws.com/smarttask-backend:latest
+Your image URL e.g 717279702591.dkr.ecr.eu-north-1.amazonaws.com/smarttask-backend:latest
 ```
 # 🧪 Troubleshooting
 DNS_PROBE_POSSIBLE: Ensure Route53 alias record points to ALB.
