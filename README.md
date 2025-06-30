@@ -61,8 +61,6 @@ Your backend runs in Docker on Fargate. It serves static HTML and Node.js API ro
 .env sample:
 
 ```ini
-Copy
-Edit
 PORT=3000
 JWT_SECRET=super_secret_key
 DATABASE_URL=postgresql://smartuser:smartpassword@<RDS-ENDPOINT>:5432/smarttasktracker
@@ -72,8 +70,6 @@ DATABASE_URL=postgresql://smartuser:smartpassword@<RDS-ENDPOINT>:5432/smarttaskt
 Install dependencies:
 
 ```bash
-Copy
-Edit
 terraform init
 terraform validate
 terraform plan
@@ -82,15 +78,11 @@ terraform apply -auto-approve
 ## Upload frontend files:
 
 ```bash
-Copy
-Edit
 aws s3 sync ./public s3://smarttask-frontend-hasnat --delete
 ```
 ## Verify domain setup:
 
 ```bash
-Copy
-Edit
 dig hasnatur-devops.com +short
 ```
 
@@ -98,8 +90,6 @@ dig hasnatur-devops.com +short
 Make sure your image is available at:
 
 ```bash
-Copy
-Edit
 717279702591.dkr.ecr.eu-north-1.amazonaws.com/smarttask-backend:latest
 ```
 # 🧪 Troubleshooting
