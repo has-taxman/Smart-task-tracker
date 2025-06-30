@@ -4,14 +4,17 @@ This project provisions a full 3-tier architecture for a task-tracking web appli
 
 ---
 ## 🖼 Screenshots
+### 🔐 Register Page
+
+![Register Page](assets/register.png)
 
 ### 🔐 Login Page
 
-![Login Page](assets/screenshot1.png)
+![Login Page](assets/login.png)
 
 ### 📋 Dashboard
 
-![Dashboard](assets/dashboard.png)
+![Dashboard](assets/index.png)
 
 ## 🚀 Features
 
